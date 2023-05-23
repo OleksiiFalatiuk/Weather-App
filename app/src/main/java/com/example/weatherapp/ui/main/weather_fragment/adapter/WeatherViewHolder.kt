@@ -17,16 +17,8 @@ class WeatherViewHolder(private val binding: ItemForecastBinding) :
     fun bind(item: ForecastModel) = with(binding) {
         tvDay.text = getDateMonthLong(item.dateEpoch.toLong())
         tvDegree.text = "${item.avgtempC}°C"
-        Glide.with(binding.root).load(whichTypeOfWeather(item.typeOfWeather)).into(ivForecast)
-    }
-
-    private fun whichTypeOfWeather(type: TypeOfWeather): Int{
-        return when(type){
-            TypeOfWeather.SUNNY -> R.drawable.item_image_sunny
-            TypeOfWeather.CLOUDY -> R.drawable.item_image_sun_with_cloud
-            TypeOfWeather.RAINY -> R.drawable.item_image_rainy
-            TypeOfWeather.OVERCASTY -> R.drawable.item_image_thunderstorm
-        }
+        Glide.with(binding.root).load(item.image).into(ivForecast)
+        root.setBackgroundResource(item.backgroundOfItem)
     }
 
     companion object {

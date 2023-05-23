@@ -1,24 +1,22 @@
 package com.example.weatherapp.ui.splash
 
-import android.Manifest
 import android.Manifest.permission.ACCESS_FINE_LOCATION
 import android.annotation.SuppressLint
-import android.content.pm.PackageManager
-import android.location.Address
-import android.location.Geocoder
-import android.location.Location
+import android.content.Intent
 import android.os.Bundle
-import android.util.Log
+import android.provider.Settings
+import android.view.LayoutInflater
+import android.view.View
+import android.widget.Button
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.ActivityCompat
 import androidx.lifecycle.lifecycleScope
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.weatherapp.R
 import com.example.weatherapp.databinding.ActivitySplashBinding
 import com.example.weatherapp.ui.main.MainActivity
+import com.example.weatherapp.utils.ActivityExt.Companion.dialogRateApp
 import com.example.weatherapp.utils.ActivityExt.Companion.toActivity
-import com.google.android.gms.location.FusedLocationProviderClient
-import com.google.android.gms.location.LocationServices
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import pub.devrel.easypermissions.AfterPermissionGranted
@@ -72,7 +70,9 @@ class SplashActivity : AppCompatActivity(R.layout.activity_splash), EasyPermissi
     }
 
     override fun onPermissionsDenied(requestCode: Int, perms: MutableList<String>) {
-
+        dialogRateApp(this){
+            navigateToMain()
+        }
     }
 
     companion object{
