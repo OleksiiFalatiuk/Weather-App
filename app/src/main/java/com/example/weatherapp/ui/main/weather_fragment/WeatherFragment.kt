@@ -59,10 +59,12 @@ class WeatherFragment : Fragment(R.layout.fragment_weather) {
         initViews()
     }
 
+    // here we init adapter
     private fun initAdapter(){
         adapterWeather = WeatherAdapter()
     }
 
+    // here we init recycler
     private fun initRecycler() = with(binding){
         recyclerDays.apply {
             layoutManager = LinearLayoutManager(requireActivity(), LinearLayoutManager.HORIZONTAL, false)
@@ -70,12 +72,14 @@ class WeatherFragment : Fragment(R.layout.fragment_weather) {
         }
     }
 
+    // here we init livedata
     private fun initLiveData(){
         viewModel.loadDataOfWeather.observe(viewLifecycleOwner){
             updateUi(it)
         }
     }
 
+    // here we init we callBacks for views
     private fun initViews() = with(binding){
         ivRefresh.setOnClickListener {
             if (ActivityCompat.checkSelfPermission(
@@ -100,10 +104,11 @@ class WeatherFragment : Fragment(R.layout.fragment_weather) {
         }
     }
 
+    // here we update ui, on our main screen with weather, also check status of request
     private fun updateUi(state: WeatherState){
         when(state.resource){
             Resource.Status.LOADING -> {
-
+                Log.d("TAG663","loading")
             }
             Resource.Status.SUCCESS -> {
                 setCurrentDayData(state)
@@ -116,6 +121,8 @@ class WeatherFragment : Fragment(R.layout.fragment_weather) {
             }
         }
     }
+
+    // load real coordinates if we get permission and load hard coordinates if we haven't
     private fun loadCoordinates(){
         if (ActivityCompat.checkSelfPermission(
                 requireActivity(),

@@ -87,26 +87,7 @@ dependencies {
 
     implementation 'com.google.android.gms:play-services-location:21.0.1'
 
-
-//    implementation libs.splashscreen
-//    implementation libs.coroutines.core
-//    implementation libs.coroutines.android
-//    implementation libs.coroutines.core.jvm
-//    implementation libs.lifecycle.runtime
-//    implementation libs.lifecycle.viewmodel
-//    implementation libs.lifecycle.extensions
     implementation libs.lottie
-//    implementation libs.recyclerview
-//    implementation libs.viewbindingpropertydelegate
-//    implementation libs.navigation.fragment
-//    implementation libs.navigation.ui
-//    implementation libs.glide
-//    implementation libs.koin
-//    implementation libs.retrofit
-//    implementation libs.serialization
-//    implementation libs.serialization.converter
-//    implementation libs.okhttp3
-//    implementation libs.interceptor
     implementation project(path: ':domain')
     implementation project(path: ':data')
 }

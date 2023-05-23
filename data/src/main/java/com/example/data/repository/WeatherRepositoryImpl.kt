@@ -29,6 +29,7 @@ class WeatherRepositoryImpl(
         )
     }
 
+    // mapping
     private fun mapMainDataOfWeather(data: MainResponse): MainWeatherModel {
         return MainWeatherModel(
             location = LocationModel(
@@ -61,6 +62,9 @@ class WeatherRepositoryImpl(
         private val listCloudy = listOf(1003, 1006, 1009, 1030)
         private val listOvercasty = listOf(1282, 1279, 1276, 1273, 1087, 1066, 1114, 1210, 1213, 1216, 1219, 1222, 1225, 1255, 1258)
 
+        /**
+        * here we check state of weather to load different ui components such as background and images
+         */
         fun createImage(code: Int): TypeOfWeather {
             return when{
                 listSunny.contains(code) -> TypeOfWeather.SUNNY

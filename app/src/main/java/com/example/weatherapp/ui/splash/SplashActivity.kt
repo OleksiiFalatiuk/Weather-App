@@ -1,5 +1,6 @@
 package com.example.weatherapp.ui.splash
 
+import android.Manifest.permission.ACCESS_COARSE_LOCATION
 import android.Manifest.permission.ACCESS_FINE_LOCATION
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -43,15 +44,15 @@ class SplashActivity : AppCompatActivity(R.layout.activity_splash), EasyPermissi
 
     @AfterPermissionGranted(RC_LOCATION)
     private fun methodRequiresTwoPermission() {
-        val perms = ACCESS_FINE_LOCATION
-        if (EasyPermissions.hasPermissions(this, perms)) {
+        val permsSecond = ACCESS_COARSE_LOCATION
+        if (EasyPermissions.hasPermissions(this, permsSecond)) {
             // Already have permission, do the thing
             navigateToMain()
         } else {
             // Do not have permissions, request them now
             EasyPermissions.requestPermissions(
                 this, "",
-                RC_LOCATION, perms
+                RC_LOCATION, permsSecond
             )
         }
     }

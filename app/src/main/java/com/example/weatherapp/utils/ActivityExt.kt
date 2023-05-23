@@ -21,6 +21,8 @@ class ActivityExt {
         inline fun <reified T> Activity.toActivity() where T : AppCompatActivity {
             startActivity(Intent(this, T::class.java))
         }
+
+        // converting long data into string format
         fun getDateMonthLong(timestamp: Long) :String {
             val timestampDate = Date(timestamp * 1000L)
             val dateFormat = SimpleDateFormat("MMM", Locale.ENGLISH)
@@ -29,7 +31,7 @@ class ActivityExt {
             val dateSecond = dateFormatSecond.format(timestampDate).toString()
             return "$dateSecond $date"
         }
-
+        // converting long data into string format
         fun getDateMonthLongSize(timestamp: Long) :String {
             val timestampDate = Date(timestamp * 1000L)
             val dateFormat = SimpleDateFormat("MMMM", Locale.ENGLISH)
@@ -39,6 +41,8 @@ class ActivityExt {
             return "$date\n$dateFull"
         }
 
+
+        // dialog when user don't grant access to permission
         fun dialogRateApp(context: Context, callback: () -> Unit){
             val builder = AlertDialog.Builder(context, R.style.ProgressDialogTheme)
             val view: View =
