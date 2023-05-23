@@ -13,7 +13,7 @@
         android:id="@+id/llMainHeader"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:background="@drawable/background_main_weather"
+        android:background="@drawable/background_main_weather_sunny"
         app:layout_constraintBottom_toTopOf="@+id/llBottom"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -38,10 +38,11 @@
                 android:src="@drawable/ic_city_image" />
 
             <TextView
+                android:id="@+id/tvCountry"
                 style="@style/city"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Azerbaijan, Baku" />
+                tools:text="Azerbaijan, Baku" />
 
         </LinearLayout>
 
@@ -62,14 +63,14 @@
                 style="@style/degrees"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="23°C" />
+                tools:text="23°C" />
 
             <ImageView
                 android:id="@+id/ivTypeOfWeather"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="96dp"
+                android:layout_height="96dp"
                 android:layout_marginTop="12dp"
-                android:src="@drawable/ic_sunny" />
+                tools:src="@drawable/ic_sunny" />
 
             <TextView
                 android:id="@+id/tvTypeOfWeather"
@@ -77,7 +78,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
-                android:text="Sunny" />
+                tools:text="Sunny" />
 
         </LinearLayout>
 
@@ -88,7 +89,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="36dp"
             android:gravity="center"
-            android:text="Monday\n23/05/2022"
+            tools:text="Monday\n23/05/2022"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
@@ -100,6 +101,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
+        android:layout_marginVertical="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
@@ -110,13 +112,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="18dp"
-            android:layout_marginTop="34dp"
-            android:text="7 days" />
+            android:layout_marginTop="24dp"
+            android:text="@string/_7_days" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerDays"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:orientation="horizontal"
+            tools:listitem="@layout/item_forecast"
             android:layout_marginVertical="16dp"/>
 
     </LinearLayout>
